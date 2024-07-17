@@ -4,23 +4,18 @@ const express= require('express')
 
 const bodyParser=require('body-parser')
 
+const adminRouter= require('./routes/admin')
+const shopRouter=require('./routes/shop')
+
 const app= express()
 
 app.use(bodyParser.urlencoded({extended:false}))
 
-app.use('/add-product',(req,res,next)=>{
-    res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submitt">Submit</button></form>')
-})
+app.use(adminRouter)
+app.use(shopRouter)
 
-app.use('/product',(req,res,next)=>{
-    console.log(req.body);
-    res.redirect('/')
-})
 
-app.use('/',(req,res,next)=>{
-    console.log('in the another middleware');
-    res.send('<h1>Hello From Express</h1>')
-})
+
 
 // const server =http.createServer(app);
 // server.listen(3000)
