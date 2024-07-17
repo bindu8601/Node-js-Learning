@@ -1,13 +1,10 @@
 const http=require('http')
-const routes=require('./routes')
-//first method
-// function rqListener(req,res){
-// console.log(req?.url,req?.headers);
-// }
-const server =http.createServer(routes);
 
-//second method
-// http.createServer(function(req,res){
+const express= require('express')
 
-// })
+const app= express()
+
+const server =http.createServer(app);
+
+
 server.listen(3000)
